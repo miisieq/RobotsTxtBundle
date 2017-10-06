@@ -9,7 +9,7 @@ It's pretty common workflow that we work on our projects in `local` environment,
 
 While we absolutely want crawlers to index our `production` environment`, we don't want to see our test servers in search results.
 
-## How it work?
+## How it works?
 Depending on the Symfony environment, application will return `robots.txt` file with rule that allows to index whole content only we are in `prod` environment. In case of another environment, the application will block whole site from indexing.
 
 ## Installation
