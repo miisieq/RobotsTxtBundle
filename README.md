@@ -7,7 +7,7 @@
 ## The problem
 It's pretty common workflow that we work on our projects in `local` environment, then deploy code to `preproduction` or `staging` server for out client to approve the work, then finally push to `production` environment.
 
-While we absolutely want crawlers to index our `production` environment`, we don't want to see our test servers in search results.
+While we absolutely want crawlers to index our `production` environment, we don't want to see our test servers in search results.
 
 ## How it works?
 Depending on the Symfony environment, application will return `robots.txt` file with rule that allows to index whole content only we are in `prod` environment. In case of another environment, the application will block whole site from indexing.
