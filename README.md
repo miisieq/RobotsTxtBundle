@@ -17,7 +17,7 @@ Depending on the Symfony environment, application will return `robots.txt` file 
 First, open a command console, enter your project directory and execute the following command to download the latest version of this bundle:
 
 ```
-composer miisieq/robots-txt-bundle
+composer require miisieq/robots-txt-bundle
 ```
 
 Then add the bundle to your kernel:
@@ -49,3 +49,4 @@ miisieq_robots_txt:
     resource: "@MiisieqRobotsTxtBundle/Controller/"
     type:     annotation
 ```
+
