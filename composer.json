@@ -6,7 +6,7 @@
     "robots",
     "robots.txt",
     "bundle",
-    "symfony",
+    "symfony"
   ],
   "license": "MIT",
   "autoload": {
