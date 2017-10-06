@@ -11,7 +11,7 @@ class UserAgentRule
     protected $disallow = [];
 
     /**
-     * UserAgent constructor
+     * UserAgent constructor.
      *
      * @param $name
      */
@@ -38,6 +38,7 @@ class UserAgentRule
 
     /**
      * @param $url
+     *
      * @return $this
      */
     public function addAllow($url)
@@ -49,11 +50,13 @@ class UserAgentRule
 
     /**
      * @param array $allow
+     *
      * @return $this
      */
     public function setAllow($allow)
     {
         $this->allow = $allow;
+
         return $this;
     }
 
@@ -67,6 +70,7 @@ class UserAgentRule
 
     /**
      * @param $url
+     *
      * @return $this
      */
     public function addDisallow($url)
@@ -78,6 +82,7 @@ class UserAgentRule
 
     /**
      * @param array $disallow
+     *
      * @return $this
      */
     public function setDisallow($disallow)
