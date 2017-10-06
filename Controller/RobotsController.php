@@ -13,7 +13,7 @@ class RobotsController extends Controller
     const COMMENT = "# www.robotstxt.org/\n# www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449\n";
 
     /**
-     * Return robots.txt file
+     * Return robots.txt file.
      *
      * @Route("/robots.txt")
      *
@@ -32,14 +32,14 @@ class RobotsController extends Controller
         $content = self::COMMENT;
 
         foreach ($collection->getUserAgentRules() as $userAgentRule) {
-            $content .= PHP_EOL . "User-agent: " . $userAgentRule->getName() . PHP_EOL;
+            $content .= PHP_EOL.'User-agent: '.$userAgentRule->getName().PHP_EOL;
 
             foreach ($userAgentRule->getDisallow() as $disallow) {
-                $content .= "Disallow: " . $disallow . PHP_EOL;
+                $content .= 'Disallow: '.$disallow.PHP_EOL;
             }
 
             foreach ($userAgentRule->getAllow() as $allow) {
-                $content .= "Allow: " . $allow . PHP_EOL;
+                $content .= 'Allow: '.$allow.PHP_EOL;
             }
         }
 
