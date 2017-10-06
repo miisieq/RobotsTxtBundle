@@ -3,21 +3,16 @@
 namespace Miisieq\RobotsTxtBundle\Model;
 
 /**
- * Class UserAgentRuleCollection
+ * Class UserAgentRuleCollection.
  *
  * Example usage:
-    $collection = (new UserAgentRuleCollection())
-        ->setUserAgentRules([
-            (new UserAgentRule('*'))
-                ->setAllow(['/'])
-                ->setDisallow(['/backend', '/login']),
-            (new UserAgentRule('Googlebot'))
-                ->setDisallow(['//*.gif$']),
-        ])
-    ;
- *
- *
- * @package Miisieq\RobotsTxtBundle\Model
+ $collection = (new UserAgentRuleCollection())
+ ->setUserAgentRules([
+ (new UserAgentRule('*'))
+ ->setAllow(['/'])
+ ->setDisallow(['/backend', '/login']),
+ (new UserAgentRule('Googlebot'))
+ ->setDisallow(['//*.gif$']),
  */
 class UserAgentRuleCollection
 {
@@ -43,6 +38,7 @@ class UserAgentRuleCollection
 
     /**
      * @param UserAgentRule[] $userAgentRules
+     *
      * @return $this
      */
     public function setUserAgentRules($userAgentRules)
