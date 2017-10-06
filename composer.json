@@ -1,0 +1,17 @@
+{
+  "name": "miisieq/robots-txt-bundle",
+  "type": "symfony-bundle",
+  "description": "Robots.txt generator for Symfony 2 & 3",
+  "keywords": [
+    "robots",
+    "robots.txt",
+    "bundle",
+    "symfony",
+  ],
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Miisieq\\RobotsTxtBundle\\": ""
+    }
+  }
+}
