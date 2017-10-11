@@ -79,7 +79,7 @@ class Generator implements GeneratorInterface
     }
 
     /**
-     * Add default rules environment-dependant
+     * Add default rules environment-dependant.
      */
     protected function initializeEnvironmentDependent()
     {
