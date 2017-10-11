@@ -24,10 +24,10 @@ class UserAgentRuleCollection
     protected $sitemaps = [];
 
     /**
-     * UserAgentRuleCollection constructor
+     * UserAgentRuleCollection constructor.
      *
      * @param UserAgentRule[] $userAgentRules
-     * @param array $sitemaps
+     * @param array           $sitemaps
      */
     public function __construct(array $userAgentRules = [], array $sitemaps = [])
     {
