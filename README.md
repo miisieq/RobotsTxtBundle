@@ -14,12 +14,15 @@ Depending on the Symfony environment, application will return `robots.txt` file 
 
 ## Installation
 
+### Step 1: Install the bundle
+
 First, open a command console, enter your project directory and execute the following command to download the latest version of this bundle:
 
 ```
 composer require miisieq/robots-txt-bundle
 ```
 
+### Step 2: Register the bundle in your kernel
 Then add the bundle to your kernel:
 ```php
 class AppKernel extends Kernel
@@ -36,11 +39,27 @@ class AppKernel extends Kernel
     }
 }
 ```
+### Step 3: Configure the bundle
+Add the following to your config file:
 
-Remove static `robots.txt` file:
-```bash
-rm web/robots.txt
+``` yaml
+# app/config/config.yml
+
+miisieq_robots_txt: ~
 ```
+
+You can easily add links to your site maps:
+``` yaml
+# app/config/config.yml
+
+miisieq_robots_txt:
+    // ...
+    sitemaps:
+        - "/sitemap.xml"
+        - "/catalog/sitemap.xml"
+```
+
+### Step 4: Register the routes
 To allow to get your `robots.txt` file, register the following route:
 
 ```yml
@@ -50,3 +69,7 @@ miisieq_robots_txt:
     type:     annotation
 ```
 
+### Step 5: Remove static `robots.txt` file:
+```bash
+rm web/robots.txt
+```
