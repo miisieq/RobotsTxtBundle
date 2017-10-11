@@ -69,7 +69,7 @@ miisieq_robots_txt:
     type:     annotation
 ```
 
-### Step 5: Remove static `robots.txt` file:
+### Step 5: Remove static `robots.txt` file
 ```bash
 rm web/robots.txt
 ```
