@@ -13,5 +13,11 @@
     "psr-4": {
       "Miisieq\\RobotsTxtBundle\\": ""
     }
+  },
+  "require": {
+    "symfony/http-foundation": "~2.0|~3.0|~4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.5"
   }
 }
