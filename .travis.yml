@@ -7,4 +7,7 @@ php:
   - 7.2
 
 install:
-  - composer install
+  - travis_retry composer install --no-interaction
+
+after_script:
+  - ./vendor/bin/coveralls -v
