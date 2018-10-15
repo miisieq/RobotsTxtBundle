@@ -28,24 +28,24 @@ class ConfigurationTest extends TestCase
             [
                 [],
                 [
-                    'host'     => '',
+                    'host'                   => '',
                     'production_environment' => 'prod',
-                    'sitemaps' => [],
+                    'sitemaps'               => [],
                 ],
             ],
             [
                 [
-                    'host'     => 'http://example.com',
+                    'host'                   => 'http://example.com',
                     'production_environment' => 'final',
-                    'sitemaps' => [
+                    'sitemaps'               => [
                         '/sitemap-1.xml',
                         '/sitemap-2.xml',
                     ],
                 ],
                 [
-                    'host'     => 'http://example.com',
+                    'host'                   => 'http://example.com',
                     'production_environment' => 'final',
-                    'sitemaps' => [
+                    'sitemaps'               => [
                         '/sitemap-1.xml',
                         '/sitemap-2.xml',
                     ],
