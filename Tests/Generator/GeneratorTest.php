@@ -43,14 +43,14 @@ class GeneratorTest extends TestCase
                 'prod',
                 [
                     'User-agent: *',
-                    'Allow: /'
+                    'Allow: /',
                 ],
             ],
             [
                 'dev',
                 [
                     'User-agent: *',
-                    'Disallow: /'
+                    'Disallow: /',
                 ],
             ],
         ];
@@ -60,7 +60,7 @@ class GeneratorTest extends TestCase
      * @dataProvider emptyRobotsValidDataProvider
      *
      * @param string $environment
-     * @param array $expected
+     * @param array  $expected
      */
     public function testGenerateEmptyProdRobots(string $environment, array $expected): void
     {
@@ -92,7 +92,7 @@ class GeneratorTest extends TestCase
                     'Sitemap: http://example.com/sitemap-2.xml',
                 ],
 
-            ]
+            ],
         ];
     }
 
@@ -100,8 +100,8 @@ class GeneratorTest extends TestCase
      * @dataProvider siteMapsDataProvider
      *
      * @param string $host
-     * @param array $siteMaps
-     * @param array $expected
+     * @param array  $siteMaps
+     * @param array  $expected
      */
     public function testGenerateRobotsWithSiteMaps(string $host, array $siteMaps, array $expected): void
     {
@@ -119,6 +119,7 @@ class GeneratorTest extends TestCase
      * Remove unnecessary data (comments and new lines) from response content.
      *
      * @param string $content
+     *
      * @return string
      */
     private function trimResponseContent(string $content): string
@@ -140,6 +141,7 @@ class GeneratorTest extends TestCase
      * Remove all lines except site maps definitions from response content.
      *
      * @param string $content
+     *
      * @return string
      */
     private function removeEverythingExceptSiteMaps(string $content): string

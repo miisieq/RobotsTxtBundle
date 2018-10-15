@@ -38,9 +38,10 @@ class Generator implements GeneratorInterface
 
     /**
      * Generator constructor.
+     *
      * @param string $host
      * @param string $environment
-     * @param array $siteMaps
+     * @param array  $siteMaps
      */
     public function __construct(string $host, string $environment, array $siteMaps)
     {
@@ -61,10 +62,10 @@ class Generator implements GeneratorInterface
         $content = self::COMMENT;
 
         foreach ($this->collection->getUserAgentRules() as $userAgentRule) {
-            $content .= PHP_EOL.'User-agent: ' . $userAgentRule->getName().PHP_EOL;
+            $content .= PHP_EOL . 'User-agent: ' . $userAgentRule->getName() . PHP_EOL;
 
             foreach ($userAgentRule->getDisallow() as $disallow) {
-                $content .= 'Disallow: ' . $disallow.PHP_EOL;
+                $content .= 'Disallow: ' . $disallow . PHP_EOL;
             }
 
             foreach ($userAgentRule->getAllow() as $allow) {

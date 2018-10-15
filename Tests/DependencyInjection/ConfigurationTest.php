@@ -28,31 +28,32 @@ class ConfigurationTest extends TestCase
             [
                 [],
                 [
-                    'host' => '',
+                    'host'     => '',
                     'sitemaps' => [],
                 ],
             ],
             [
                 [
-                    'host' => 'http://example.com',
+                    'host'     => 'http://example.com',
                     'sitemaps' => [
                         '/sitemap-1.xml',
                         '/sitemap-2.xml',
                     ],
                 ],
                 [
-                    'host' => 'http://example.com',
+                    'host'     => 'http://example.com',
                     'sitemaps' => [
                         '/sitemap-1.xml',
                         '/sitemap-2.xml',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
     /**
      * @dataProvider validConfigDataProvider
+     *
      * @param array $options
      * @param array $results
      */
