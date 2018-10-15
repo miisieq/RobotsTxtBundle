@@ -7,5 +7,9 @@ php:
 install:
   - travis_retry composer install --no-interaction
 
-after_script:
-  - ./vendor/bin/php-coveralls -v
+script:
+  - mkdir -p build/logs
+  - php vendor/bin/phpunit -c phpunit.xml.dist
+
+after_success:
+  - travis_retry php vendor/bin/php-coveralls -v
