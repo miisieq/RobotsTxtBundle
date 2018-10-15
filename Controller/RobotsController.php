@@ -23,6 +23,7 @@ class RobotsController
 
     /**
      * RobotsController constructor.
+     *
      * @param GeneratorInterface $generator
      */
     public function __construct(GeneratorInterface $generator)
