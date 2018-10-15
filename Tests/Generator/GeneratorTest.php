@@ -59,8 +59,8 @@ class GeneratorTest extends TestCase
     /**
      * @dataProvider emptyRobotsValidDataProvider
      *
-     * @param bool $environment
-     * @param array  $expected
+     * @param bool  $environment
+     * @param array $expected
      */
     public function testGenerateEmptyProdRobots(bool $environment, array $expected): void
     {

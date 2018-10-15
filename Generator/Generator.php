@@ -40,7 +40,7 @@ class Generator implements GeneratorInterface
      * Generator constructor.
      *
      * @param string $host
-     * @param bool $isProduction
+     * @param bool   $isProduction
      * @param array  $siteMaps
      */
     public function __construct(string $host, bool $isProduction, array $siteMaps)
