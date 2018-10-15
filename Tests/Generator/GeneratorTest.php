@@ -23,7 +23,7 @@ class GeneratorTest extends TestCase
     {
         $generator = new Generator(
             'http://example.com',
-            'dummy',
+            false,
             []
         );
         $response = $generator->generate();
@@ -40,14 +40,14 @@ class GeneratorTest extends TestCase
     {
         return [
             [
-                'prod',
+                true,
                 [
                     'User-agent: *',
                     'Allow: /',
                 ],
             ],
             [
-                'dev',
+                false,
                 [
                     'User-agent: *',
                     'Disallow: /',
@@ -59,10 +59,10 @@ class GeneratorTest extends TestCase
     /**
      * @dataProvider emptyRobotsValidDataProvider
      *
-     * @param string $environment
+     * @param bool $environment
      * @param array  $expected
      */
-    public function testGenerateEmptyProdRobots(string $environment, array $expected): void
+    public function testGenerateEmptyProdRobots(bool $environment, array $expected): void
     {
         $generator = new Generator(
             'http://example.com',
@@ -107,7 +107,7 @@ class GeneratorTest extends TestCase
     {
         $generator = new Generator(
             $host,
-            'dummy',
+            false,
             $siteMaps
         );
         $responseContent = $this->removeEverythingExceptSiteMaps($generator->generate()->getContent());

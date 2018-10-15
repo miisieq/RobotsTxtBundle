@@ -30,7 +30,17 @@ class MiisieqRobotsTxtExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $def = $container->getDefinition('miisieq_robots_txt_bundle.generator');
-        $def->replaceArgument(0, $config['host']);
-        $def->replaceArgument(2, $config['sitemaps']);
+        $def->replaceArgument(
+            0,
+            $config['host']
+        );
+        $def->replaceArgument(
+            1,
+            $container->getParameter('kernel.environment') === $config['production_environment']
+        );
+        $def->replaceArgument(
+            2,
+            $config['sitemaps']
+        );
     }
 }

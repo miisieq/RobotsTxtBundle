@@ -53,6 +53,8 @@ You can easily add links to your site maps:
 # app/config/config.yml
 
 miisieq_robots_txt:
+    host: http://example.com
+    production_environment: prod
     sitemaps:
         - "/sitemap.xml"
         - "/catalog/sitemap.xml"

@@ -22,7 +22,7 @@ class RobotsControllerTest extends \PHPUnit\Framework\TestCase
     public function testGenerate(): void
     {
         $controller = new RobotsController(
-            new Generator('http://example.com', 'dummy', [])
+            new Generator('http://example.com', false, [])
         );
 
         $response = $controller->getAction();

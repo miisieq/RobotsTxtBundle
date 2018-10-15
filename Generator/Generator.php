@@ -27,9 +27,9 @@ class Generator implements GeneratorInterface
     protected $host;
 
     /**
-     * @var string
+     * @var bool
      */
-    protected $environment;
+    protected $isProduction;
 
     /**
      * @var UserAgentRuleCollection
@@ -40,13 +40,13 @@ class Generator implements GeneratorInterface
      * Generator constructor.
      *
      * @param string $host
-     * @param string $environment
+     * @param bool $isProduction
      * @param array  $siteMaps
      */
-    public function __construct(string $host, string $environment, array $siteMaps)
+    public function __construct(string $host, bool $isProduction, array $siteMaps)
     {
         $this->host = $host;
-        $this->environment = $environment;
+        $this->isProduction = $isProduction;
         $this->collection = new UserAgentRuleCollection([], $siteMaps);
     }
 
@@ -85,7 +85,7 @@ class Generator implements GeneratorInterface
      */
     protected function addDefaultRules()
     {
-        if ('prod' === $this->environment) {
+        if ($this->isProduction) {
             $this->collection->addUserAgentRules((new UserAgentRule('*'))->setAllow(['/']));
         } else {
             $this->collection->addUserAgentRules((new UserAgentRule('*'))->setDisallow(['/']));
