@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Miisieq\RobotsTxtBundle\Model;
 
 class UserAgentRuleCollection
@@ -21,18 +23,18 @@ class UserAgentRuleCollection
     /**
      * @var array
      */
-    protected $sitemaps = [];
+    protected $siteMaps = [];
 
     /**
      * UserAgentRuleCollection constructor.
      *
      * @param UserAgentRule[] $userAgentRules
-     * @param array           $sitemaps
+     * @param array           $siteMaps
      */
-    public function __construct(array $userAgentRules = [], array $sitemaps = [])
+    public function __construct(array $userAgentRules = [], array $siteMaps = [])
     {
         $this->userAgentRules = $userAgentRules;
-        $this->sitemaps = $sitemaps;
+        $this->siteMaps = $siteMaps;
     }
 
     /**
@@ -40,7 +42,7 @@ class UserAgentRuleCollection
      *
      * @return $this
      */
-    public function addUserAgentRules(UserAgentRule $userAgentRule)
+    public function addUserAgentRules(UserAgentRule $userAgentRule): self
     {
         $this->userAgentRules[] = $userAgentRule;
 
@@ -50,7 +52,7 @@ class UserAgentRuleCollection
     /**
      * @return UserAgentRule[]
      */
-    public function getUserAgentRules()
+    public function getUserAgentRules(): array
     {
         return $this->userAgentRules;
     }
@@ -60,7 +62,7 @@ class UserAgentRuleCollection
      *
      * @return $this
      */
-    public function setUserAgentRules($userAgentRules)
+    public function setUserAgentRules($userAgentRules): self
     {
         $this->userAgentRules = $userAgentRules;
 
@@ -70,19 +72,19 @@ class UserAgentRuleCollection
     /**
      * @return array
      */
-    public function getSitemaps()
+    public function getSiteMaps(): array
     {
-        return $this->sitemaps;
+        return $this->siteMaps;
     }
 
     /**
-     * @param array $sitemaps
+     * @param array $siteMaps
      *
      * @return $this
      */
-    public function setSitemaps($sitemaps)
+    public function setSiteMaps($siteMaps): self
     {
-        $this->sitemaps = $sitemaps;
+        $this->siteMaps = $siteMaps;
 
         return $this;
     }

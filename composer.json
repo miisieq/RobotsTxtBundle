@@ -1,24 +1,25 @@
 {
-  "name": "miisieq/robots-txt-bundle",
-  "type": "symfony-bundle",
-  "description": "Robots.txt generator for Symfony 2 & 3",
-  "keywords": [
-    "robots",
-    "robots.txt",
-    "bundle",
-    "symfony"
-  ],
-  "license": "MIT",
-  "autoload": {
-    "psr-4": {
-      "Miisieq\\RobotsTxtBundle\\": ""
+    "name": "miisieq/robots-txt-bundle",
+    "type": "symfony-bundle",
+    "description": "Robots.txt generator for Symfony 2, 3 & 4",
+    "keywords": [
+        "robots",
+        "robots.txt",
+        "bundle",
+        "symfony"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Miisieq\\RobotsTxtBundle\\": ""
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "symfony/http-foundation": "~2.0|~3.0|~4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.7 | ^6 | ^7",
+        "php-coveralls/php-coveralls": "^2.1"
     }
-  },
-  "require": {
-    "symfony/http-foundation": "~2.0|~3.0|~4.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "~5.7 | ~6.5",
-    "satooshi/php-coveralls": "^1.0"
-  }
 }

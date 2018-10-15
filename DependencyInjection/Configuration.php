@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Miisieq\RobotsTxtBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -26,6 +28,12 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('host')
+                    ->defaultValue('')
+                ->end()
+                ->scalarNode('production_environment')
+                    ->defaultValue('prod')
+                ->end()
                 ->arrayNode('sitemaps')
                     ->prototype('scalar')->end()
                 ->end()

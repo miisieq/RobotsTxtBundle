@@ -1,11 +1,20 @@
 <?php
 
+/*
+ * This file is part of the `miisieq/RobotsTxtBundle` project.
+ *
+ * (c) https://github.com/miisieq/RobotsTxtBundle/graphs/contributors
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace Miisieq\RobotsTxtBundle\Generator;
 
 use Miisieq\RobotsTxtBundle\Model\UserAgentRule;
 use Miisieq\RobotsTxtBundle\Model\UserAgentRuleCollection;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
 class Generator implements GeneratorInterface
@@ -15,12 +24,12 @@ class Generator implements GeneratorInterface
     /**
      * @var string
      */
-    protected $environment;
+    protected $host;
 
     /**
-     * @var array
+     * @var bool
      */
-    protected $sitemaps;
+    protected $isProduction;
 
     /**
      * @var UserAgentRuleCollection
@@ -28,22 +37,17 @@ class Generator implements GeneratorInterface
     protected $collection;
 
     /**
-     * @var Request|null
-     */
-    protected $request;
-
-    /**
      * Generator constructor.
      *
-     * @param RequestStack $request
-     * @param $environment
-     * @param array $sitemaps
+     * @param string $host
+     * @param bool   $isProduction
+     * @param array  $siteMaps
      */
-    public function __construct(RequestStack $request, $environment, array $sitemaps)
+    public function __construct(string $host, bool $isProduction, array $siteMaps)
     {
-        $this->request = $request->getMasterRequest();
-        $this->environment = $environment;
-        $this->collection = new UserAgentRuleCollection([], $sitemaps);
+        $this->host = $host;
+        $this->isProduction = $isProduction;
+        $this->collection = new UserAgentRuleCollection([], $siteMaps);
     }
 
     /**
@@ -51,28 +55,26 @@ class Generator implements GeneratorInterface
      *
      * @return Response
      */
-    public function generate()
+    public function generate(): Response
     {
-        $this->initializeEnvironmentDependent();
+        $this->addDefaultRules();
 
         $content = self::COMMENT;
 
         foreach ($this->collection->getUserAgentRules() as $userAgentRule) {
-            $content .= PHP_EOL.'User-agent: '.$userAgentRule->getName().PHP_EOL;
+            $content .= PHP_EOL . 'User-agent: ' . $userAgentRule->getName() . PHP_EOL;
 
             foreach ($userAgentRule->getDisallow() as $disallow) {
-                $content .= 'Disallow: '.$disallow.PHP_EOL;
+                $content .= 'Disallow: ' . $disallow . PHP_EOL;
             }
 
             foreach ($userAgentRule->getAllow() as $allow) {
-                $content .= 'Allow: '.$allow.PHP_EOL;
+                $content .= 'Allow: ' . $allow . PHP_EOL;
             }
         }
 
-        if ($this->request instanceof Request) {
-            foreach ($this->collection->getSitemaps() as $sitemap) {
-                $content .= PHP_EOL.'Sitemap: '.$this->request->getSchemeAndHttpHost().$this->request->getBasePath().$sitemap;
-            }
+        foreach ($this->collection->getSiteMaps() as $sitemap) {
+            $content .= PHP_EOL . 'Sitemap: ' . $this->host . $sitemap;
         }
 
         return new Response($content, Response::HTTP_OK, ['Content-Type' => 'text/plain']);
@@ -81,9 +83,9 @@ class Generator implements GeneratorInterface
     /**
      * Add default rules environment-dependant.
      */
-    protected function initializeEnvironmentDependent()
+    protected function addDefaultRules()
     {
-        if ('prod' === $this->environment) {
+        if ($this->isProduction) {
             $this->collection->addUserAgentRules((new UserAgentRule('*'))->setAllow(['/']));
         } else {
             $this->collection->addUserAgentRules((new UserAgentRule('*'))->setDisallow(['/']));

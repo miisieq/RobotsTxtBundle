@@ -1,5 +1,16 @@
 <?php
 
+/*
+ * This file is part of the `miisieq/RobotsTxtBundle` project.
+ *
+ * (c) https://github.com/miisieq/RobotsTxtBundle/graphs/contributors
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace Miisieq\RobotsTxtBundle\Tests\Model;
 
 use Miisieq\RobotsTxtBundle\Model\UserAgentRule;
@@ -8,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 
 class UserAgentRuleCollectionTest extends TestCase
 {
-    public function testSetAndGet()
+    public function testSetAndGet(): void
     {
         $firstRule = (new UserAgentRule('googlebot'))->addAllow('/');
         $secondRule = (new UserAgentRule('bingbot'))->addDisallow('/');
@@ -16,8 +27,8 @@ class UserAgentRuleCollectionTest extends TestCase
         $collection = new UserAgentRuleCollection();
         $this->assertInstanceOf('\Miisieq\RobotsTxtBundle\Model\UserAgentRuleCollection', $collection);
 
-        $collection->setSitemaps(['/sitemap.xml']);
-        $this->assertSame(['/sitemap.xml'], $collection->getSitemaps());
+        $collection->setSiteMaps(['/sitemap.xml']);
+        $this->assertSame(['/sitemap.xml'], $collection->getSiteMaps());
 
         $collection->setUserAgentRules([$firstRule]);
         $this->assertSame([$firstRule], $collection->getUserAgentRules());

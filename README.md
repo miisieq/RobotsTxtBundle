@@ -53,7 +53,8 @@ You can easily add links to your site maps:
 # app/config/config.yml
 
 miisieq_robots_txt:
-    // ...
+    host: http://example.com
+    production_environment: prod
     sitemaps:
         - "/sitemap.xml"
         - "/catalog/sitemap.xml"
@@ -65,11 +66,11 @@ To allow to get your `robots.txt` file, register the following route:
 ```yml
 # app/config/routing.yml
 miisieq_robots_txt:
-    resource: "@MiisieqRobotsTxtBundle/Controller/"
-    type:     annotation
+    resource: "@MiisieqRobotsTxtBundle/Resources/config/routes.yaml"
+    prefix:   /
 ```
 
-### Step 5: Remove static `robots.txt` file
+### Step 5: Remove static `robots.txt` file (if exists)
 ```bash
 rm web/robots.txt
 ```
