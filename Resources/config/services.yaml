@@ -1,7 +1,6 @@
 services:
     miisieq_robots_txt_bundle.generator:
         class: Miisieq\RobotsTxtBundle\Generator\Generator
-        public: true
         arguments:
           - ~
           - "%kernel.environment%"
