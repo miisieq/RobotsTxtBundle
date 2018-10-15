@@ -1,0 +1,4 @@
+miisieq_robots_txt:
+    path:     /robots.txt
+    defaults:
+        _controller: miisieq_robots_txt_bundle.robots_controller::getAction
