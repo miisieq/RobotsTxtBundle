@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Miisieq\RobotsTxtBundle\Model;
 
 class UserAgentRule
@@ -32,7 +34,7 @@ class UserAgentRule
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -40,17 +42,17 @@ class UserAgentRule
     /**
      * @return array
      */
-    public function getAllow()
+    public function getAllow(): array
     {
         return $this->allow;
     }
 
     /**
-     * @param $url
+     * @param string $url
      *
      * @return $this
      */
-    public function addAllow($url)
+    public function addAllow(string $url): self
     {
         $this->allow[] = $url;
 
@@ -62,7 +64,7 @@ class UserAgentRule
      *
      * @return $this
      */
-    public function setAllow($allow)
+    public function setAllow(array $allow): self
     {
         $this->allow = $allow;
 
@@ -72,17 +74,17 @@ class UserAgentRule
     /**
      * @return array
      */
-    public function getDisallow()
+    public function getDisallow(): array
     {
         return $this->disallow;
     }
 
     /**
-     * @param $url
+     * @param string $url
      *
      * @return $this
      */
-    public function addDisallow($url)
+    public function addDisallow(string $url): self
     {
         $this->disallow[] = $url;
 
@@ -94,7 +96,7 @@ class UserAgentRule
      *
      * @return $this
      */
-    public function setDisallow($disallow)
+    public function setDisallow($disallow): self
     {
         $this->disallow = $disallow;
 

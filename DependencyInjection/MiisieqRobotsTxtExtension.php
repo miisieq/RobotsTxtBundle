@@ -11,7 +11,6 @@
 
 namespace Miisieq\RobotsTxtBundle\DependencyInjection;
 
-use Miisieq\RobotsTxtBundle\Generator\Generator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -25,12 +24,13 @@ class MiisieqRobotsTxtExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
+        $loader->load('services.yaml');
 
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $def = $container->getDefinition(Generator::class);
+        $def = $container->getDefinition('miisieq_robots_txt_bundle.generator');
+        $def->replaceArgument(0, $config['host']);
         $def->replaceArgument(2, $config['sitemaps']);
     }
 }

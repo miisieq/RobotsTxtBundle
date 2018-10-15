@@ -1,6 +1,0 @@
-services:
-    Miisieq\RobotsTxtBundle\Generator\Generator:
-        arguments:
-          - "@request_stack"
-          - "%kernel.environment%"
-          - ~

@@ -1,0 +1,14 @@
+services:
+    miisieq_robots_txt_bundle.generator:
+        class: Miisieq\RobotsTxtBundle\Generator\Generator
+        public: true
+        arguments:
+          - ~
+          - "%kernel.environment%"
+          - ~
+
+    miisieq_robots_txt_bundle.robots_controller:
+        class: Miisieq\RobotsTxtBundle\Controller\RobotsController
+        public: true
+        arguments:
+          - "@miisieq_robots_txt_bundle.generator"

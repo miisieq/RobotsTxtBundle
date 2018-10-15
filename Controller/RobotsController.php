@@ -11,22 +11,32 @@
 
 namespace Miisieq\RobotsTxtBundle\Controller;
 
-use Miisieq\RobotsTxtBundle\Generator\Generator;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Miisieq\RobotsTxtBundle\Generator\GeneratorInterface;
 use Symfony\Component\HttpFoundation\Response;
 
-class RobotsController extends Controller
+class RobotsController
 {
     /**
+     * @var GeneratorInterface
+     */
+    private $generator;
+
+    /**
+     * RobotsController constructor.
+     * @param GeneratorInterface $generator
+     */
+    public function __construct(GeneratorInterface $generator)
+    {
+        $this->generator = $generator;
+    }
+
+    /**
      * Return robots.txt file.
-     *
-     * @Route("/robots.txt")
      *
      * @return Response
      */
     public function getAction()
     {
-        return $this->get(Generator::class)->generate();
+        return $this->generator->generate();
     }
 }
