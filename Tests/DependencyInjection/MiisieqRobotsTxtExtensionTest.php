@@ -34,7 +34,7 @@ class MiisieqRobotsTxtExtensionTest extends TestCase
 
     public static function assertSaneContainer(Container $container): void
     {
-        $errors = array();
+        $errors = [];
 
         foreach ($container->getServiceIds() as $id) {
             try {
@@ -44,7 +44,7 @@ class MiisieqRobotsTxtExtensionTest extends TestCase
             }
         }
 
-        self::assertEquals(array(), $errors);
+        self::assertEquals([], $errors);
     }
 
     protected function setUp(): void
